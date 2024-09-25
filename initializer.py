@@ -221,9 +221,9 @@ def load_braincore3():
                 * 유연한 근무 환경: 자율출퇴근제를 포함한 직원 복지를 강화하여 창의적이고 자율적인 업무 환경을 조성합니다."""
     st.session_state["job_title"] = "AI & IoT 서비스 기획자 모집! (3~5년 경력, 자유로운 근무환경)"
     job_roles = ['교육사업 기획.운영', '이러닝교육과정운영', '교육서비스운영', '인재교육', '교육과정 개발ㆍ강의']
-    job_categories = ['프로덕트 매니저', '데이터 분석가', 'UX/UI 기획자', 'AI 비즈니스 컨설턴트', '디지털 마케팅 기획자']
+    job_categories = ['프로덕트 매니저', '데이터 분석가', 'UX획UI 기획자', 'AI 비즈니스 컨설턴트', '디지털 마케팅 기획자']
     job_certification = ['데이터분석준전문가', 'AI 프랙티셔너', '정보처리기사', '빅데이터 분석기사', 'IoT 지식능력검']
-    job_keywords = ['인공지능 서비스 기', 'IOT 우대', '경력 3~5년', '자율출퇴근제', '서류 및 2회 면접']
+    job_keywords = ['인공지능 서비스 기획', 'IOT 우대', '경력 3~5년', '자율출퇴근제', '서류 및 2회 면접']
 
     return job_categories, job_roles, job_certification, job_keywords
 

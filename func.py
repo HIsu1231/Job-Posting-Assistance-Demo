@@ -8,7 +8,7 @@ def load_selected_welfare():
     if st.session_state['other_welfare']:
         other_welfare_list = [w.strip() for w in st.session_state['other_welfare'].split(',')]
         for welfare_item in other_welfare_list:
-            if welfare_item and welfare_item not in welfare:
+            if welfare_item not in selected_welfare:
                 selected_welfare.append(welfare_item)
 
     return selected_welfare

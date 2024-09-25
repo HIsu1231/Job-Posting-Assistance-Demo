@@ -88,7 +88,8 @@ with col2:
     else:
         publication_date = datetime.today().strftime("%Y-%m-%d")
 
-    st.write("공고 게시일: ", publication_date)
+    publication_date_str = publication_date.strftime("%Y-%m-%d") if isinstance(publication_date, datetime) else str(publication_date)
+    st.write("공고 게시일: ", publication_date_str)
 
     # 공고 마감일 출력
     if st.session_state['Deadline'] == "직접 설정":

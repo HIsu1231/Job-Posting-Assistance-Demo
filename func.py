@@ -6,7 +6,7 @@ def load_selected_welfare():
         selected_welfare.append(item)
     ####사용자가 입력한 기타 복지를 쉼표로 나눠서 추가
     if st.session_state['other_welfare']:
-        other_welfare_list = [w.strip() for w in other_welfare.split(',')]
+        other_welfare_list = [w.strip() for w in st.session_state['other_welfare'].split(',')]
         for welfare_item in other_welfare_list:
             if welfare_item and welfare_item not in welfare:
                 selected_welfare.append(welfare_item)

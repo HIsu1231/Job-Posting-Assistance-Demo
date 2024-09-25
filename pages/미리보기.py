@@ -1,10 +1,6 @@
 import streamlit as st
 from PIL import Image
-# import os
-#
-# current_dir = os.getcwd()
-# st.write(f"Current working directory: {current_dir}")
-
+from datetime import datetime
 
 st.title(st.session_state['job_title'])
 
@@ -87,8 +83,12 @@ st.markdown(keywords_html, unsafe_allow_html=True)
 
 col1, col2 = st.columns([4.6, 1])
 with col2:
-    if st.session_state['Deadline'] == "직접 설정":
+    if st.session_state['publication'] == "직접 설정":
         st.write("공고 게시일: ", st.session_state["date_of_publication"])
+    else:
+        today_date = datetime.today().strftime("%Y-%m-%d")
+        st.write("공고 게시일: ", today_date)
+    if st.session_state['Deadline'] == "직접 설정":
         st.write("공고 마감일: ", st.session_state['deadline_date'])
     else: st.write("공고 마감일: ", st.session_state['Deadline'])
 

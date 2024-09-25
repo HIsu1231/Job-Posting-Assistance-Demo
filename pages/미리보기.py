@@ -83,21 +83,23 @@ st.markdown(keywords_html, unsafe_allow_html=True)
 
 col1, col2 = st.columns([4.6, 1])
 with col2:
-    # 공고 게시일 출력
     if st.session_state['publication'] == "직접 설정":
-        publication_date = datetime.strptime(st.session_state["date_of_publication"], "%Y-%m-%d").strftime("%Y-%m-%d")
-        st.write("공고 게시일: ", publication_date)
+        publication_date = st.session_state["date_of_publication"]
     else:
-        today_date = datetime.today().strftime("%Y-%m-%d")
-        st.write("공고 게시일: ", today_date)
+        publication_date = datetime.today().strftime("%Y-%m-%d")
+
+    st.write("공고 게시일: ", publication_date)
 
     # 공고 마감일 출력
     if st.session_state['Deadline'] == "직접 설정":
-        deadline_date = datetime.strptime(st.session_state['deadline_date'], "%Y-%m-%d").strftime("%Y-%m-%d")
-        st.write("공고 마감일: ", deadline_date)
+        deadline_date = st.session_state['deadline_date']
     else:
-        deadline_date = datetime.strptime(st.session_state['Deadline'], "%Y-%m-%d").strftime("%Y-%m-%d")
-        st.write("공고 마감일: ", deadline_date)
+        deadline_date = st.session_state['Deadline']
+
+    # 마감일을 텍스트로 변환하여 st.write로 출력
+    deadline_date_str = deadline_date.strftime("%Y-%m-%d") if isinstance(deadline_date, datetime) else str(
+        deadline_date)
+    st.write("공고 마감일: ", deadline_date_str)
 
 container1 = st.container(border=True)
 with container1:

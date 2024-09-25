@@ -188,12 +188,7 @@ if st.session_state['draft_generation']:
                 if st.session_state['Deadline'] == "직접 설정":
                     st.session_state['deadline_date'] = st.date_input("마감일 입력", value=st.session_state['deadline_date'])
 
-    col1, col2, col3 = st.columns(3)
-    with col2:
-        st.link_button("👀 미리 보기", url='https://job-posting-assistance-demo-7vdkgrkgvzuq87jtcxlfsp.streamlit.app/%EB%AF%B8%EB%A6%AC%EB%B3%B4%EA%B8%B0')
-
-
-
+    
 
 
 

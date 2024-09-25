@@ -190,7 +190,7 @@ if st.session_state['draft_generation']:
 
     col1, col2, col3 = st.columns(3)
     with col2:
-        st.button("👀 미리 보기")
+        st.link_button("👀 미리 보기", url='https://job-posting-assistance-demo-7vdkgrkgvzuq87jtcxlfsp.streamlit.app/%EB%AF%B8%EB%A6%AC%EB%B3%B4%EA%B8%B0')
 
 
 

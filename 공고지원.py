@@ -40,10 +40,10 @@ if st.session_state.keyword_generation:
     if "강사" in st.session_state['job_description']:
         if st.session_state['tone'] == "격식있게":
             job_categories, job_roles, job_certification, job_keywords = load_braincore1_not_kind()
-            load_braincore2()
+            load_braincore2_not_kind()
         else:
-            job_categories, job_roles, job_certification, job_keywords = load_braincore1_not_kind()
-            load_braincore2()
+            job_categories, job_roles, job_certification, job_keywords = load_braincore1_kind()
+            load_braincore2_kind()
 
     else:
         job_categories, job_roles, job_certification, job_keywords = load_braincore3()

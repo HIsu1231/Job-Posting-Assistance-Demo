@@ -21,7 +21,7 @@ def load_selected_recruitment():
     if st.session_state['other_recruitment']:
         other_recruitment_list = [w.strip() for w in st.session_state['other_recruitment'].split(',')]
         for recruitment_item in other_recruitment_list:
-            if recruitment_item and recruitment_item not in recruitment:
+            if recruitment_item not in selected_recruitment:
                 selected_recruitment.append(recruitment_item)
     return selected_recruitment
 

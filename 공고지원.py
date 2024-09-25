@@ -29,7 +29,7 @@ selected_recruitment = load_selected_recruitment()
 st.session_state['selected_recruitment'] = selected_recruitment
 
 # 톤 선택 라디오 버튼 (사이드바)
-tone = st.sidebar.radio("톤 선택", ("격식있게", "친근하게"))
+st.session_state['tone'] = st.sidebar.radio("톤 선택", ("격식있게", "친근하게"))
 
 if st.sidebar.button('✨ 직무/직종/키워드 생성', key='keyword_generation_btn'):
     st.session_state['keyword_generation'] = True
@@ -37,14 +37,21 @@ if st.sidebar.button('✨ 직무/직종/키워드 생성', key='keyword_generati
 
 #####################################################직무/직종/키워드 (1. 브레인코어)####################################################
 if st.session_state.keyword_generation:
-    if st.session_state['business_registration_number'] == "111-11-11111":
-        job_categories, job_roles, job_certification, job_keywords = load_braincore1()
-        load_braincore2()
+    if "강사" in st.session_state['job_description']:
+        if st.session_state['tone'] == "격식있게":
+            job_categories, job_roles, job_certification, job_keywords = load_braincore1_not_kind()
+            load_braincore2()
+        else:
+            job_categories, job_roles, job_certification, job_keywords = load_braincore1_not_kind()
+            load_braincore2()
+
+    else:
+        job_categories, job_roles, job_certification, job_keywords = load_braincore3()
+        load_braincore4()
 
 
     st.text_area("회사 소개", st.session_state['braincore'], height=165)
     generate_checkbox_section("1. 추천 직종", 'job_category', job_categories)
-    #generate_checkbox_section("2. 추천 직무", 'job_role', job_roles)
     generate_checkbox_section("2. 직종 키워드", 'job_keyword', job_keywords)
     generate_checkbox_section("3. 추천 자격증", 'job_certification', job_certification)
 
@@ -188,49 +195,4 @@ if st.session_state['draft_generation']:
                 if st.session_state['Deadline'] == "직접 설정":
                     st.session_state['deadline_date'] = st.date_input("마감일 입력", value=st.session_state['deadline_date'])
 
-    
 
-
-
-    # st.markdown("<h4 style='font-weight: bold;'>4. 직무 내용</h4>", unsafe_allow_html=True)
-    # st.session_state['job_description_result'] = st.text_area(
-    #     '직무 내용', value=st.session_state['job_description_result'], height=200, label_visibility='collapsed')
-    #
-    # col1, col2, col3 = st.columns([10, 2.8, 2])
-    # # 회사/직무 소개 전체 삭제 버튼을 누른 경우 텍스트를 삭제
-    # with col2:
-    #     if st.button("🗑️ 전체 삭제", key='delete_company_intro'):
-    #         st.session_state['job_description_result'] = ""  # 텍스트 상자 내용을 빈 문자열로 설정
-    #         st.rerun()
-    # with col3:
-    #     # 복사 버튼을 누른 경우, 복사 알림 메시지 출력
-    #     if st.button("📄 복사", key='copy_company_intro'):
-    #         pyperclip.copy(st.session_state['job_description_result'])  # 텍스트 복사
-    #
-    # st.markdown("<h5 style='font-weight: bold;'>5. 추천 자격증</h4>", unsafe_allow_html=True)
-    # col1, col2, col3, col4, col5 = st.columns(5)
-    # # 각 직종 키워드 선택 상태를 체크박스로 표시
-    # with col1:
-    #     st.session_state['license'][0] = st.checkbox('추천 자격증 1', value=st.session_state['license'][0])
-    # with col2:
-    #     st.session_state['license'][1] = st.checkbox('추천 자격증 2', value=st.session_state['license'][1])
-    # with col3:
-    #     st.session_state['license'][2] = st.checkbox('추천 자격증 3', value=st.session_state['license'][2])
-    # with col4:
-    #     st.session_state['license'][3] = st.checkbox('추천 자격증 4', value=st.session_state['license'][3])
-    # with col5:
-    #     st.session_state['license'][4] = st.checkbox('추천 자격증 5', value=st.session_state['license'][4])
-    #
-    # st.markdown("<h5 style='font-weight: bold;'>6. 채용 정보 검색어</h4>", unsafe_allow_html=True)
-    # col1, col2, col3, col4, col5 = st.columns(5)
-    # # 각 직종 키워드 선택 상태를 체크박스로 표시
-    # with col1:
-    #     st.session_state['search_word'][0] = st.checkbox('검색어 1', value=st.session_state['search_word'][0])
-    # with col2:
-    #     st.session_state['search_word'][1] = st.checkbox('검색어 2', value=st.session_state['search_word'][1])
-    # with col3:
-    #     st.session_state['search_word'][2] = st.checkbox('검색어 3', value=st.session_state['search_word'][2])
-    # with col4:
-    #     st.session_state['search_word'][3] = st.checkbox('검색어 4', value=st.session_state['search_word'][3])
-    # with col5:
-    #     st.session_state['search_word'][4] = st.checkbox('검색어 5', value=st.session_state['search_word'][4])
